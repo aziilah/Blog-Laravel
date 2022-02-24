@@ -15,15 +15,15 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            //tambah sendiri
-            $table->foreignId('category_id'); //FK utk table Category
-            $table->foreignId('user_id'); //FK utk table User
+
+            $table->foreignId('category_id'); //FK 
+            $table->foreignId('user_id'); //FK 
             $table->string('title');
-            $table->string('slug')->unique(); //xda boleh slug yg sama..sebab dia url
-            $table->string('image')->nullable();  //string utk simpan nama dan tempat simpan file //file duupload di directory
+            $table->string('slug')->unique(); 
+            $table->string('image')->nullable();  
             $table->text('excerpt');
             $table->text('body');
-            $table->timestamp('published_at')->nullable(); //bila posting dipublish
+            $table->timestamp('published_at')->nullable(); 
             $table->timestamps();
         });
     }

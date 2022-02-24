@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         
-        // //buat seeding secara manual
         User::create([
             'name' => 'Nur Aziilah',
             'username' => 'ilah',
@@ -25,11 +24,6 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password')
         ]);
 
-        // User::create([
-        //     'name' => 'Giselle Uchinaga',
-        //     'email' => 'gisellegg@yahoo.com',
-        //     'password' => bcrypt('54321')
-        // ]);
 
         User::factory(3)->create();
 

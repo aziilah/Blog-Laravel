@@ -8,14 +8,11 @@
 
             <form action="/posts" method="">
                 @if (request('category')) 
-                {{-- JIka dalam request ada category, buat sebuah input yg kita sembunyikan, name nya category, isinya kita ambil dari req category...supaya  ada dlm search dan category dlm URl --}}
-                    <input type="hidden" name="category" value="{{ request('category') }}">
-                    
+                    <input type="hidden" name="category" value="{{ request('category') }}">                   
                 @endif
 
                 @if (request('author')) 
-                    <input type="hidden" name="author" value="{{ request('author') }}">
-                    
+                    <input type="hidden" name="author" value="{{ request('author') }}">                   
                 @endif
 
                 <div class="input-group mb-3">
@@ -27,12 +24,10 @@
     </div>
 
     {{-- HERO POST --}}
-    {{-- jika ada posts, tampilkan card dibawah --}}
     @if ($posts->count()) 
 
         <div class="card mb-3">
 
-            {{-- jika ADA file image --}}
         @if ($posts[0]->image)
         <div style="max-height: 500px; overflow: hidden; ">
 
@@ -40,13 +35,12 @@
 
         </div>
 
-      {{-- jika TIDAK ADA file image  --}}
         @else 
         <img src="https://source.unsplash.com/1200x400?{{ $posts[0]->category->name }}" class="card-img-top" alt="{{ $posts[0]->category->name }}">
 
-      @endif
+    @endif
 
-            <div class="card-body text-center">
+        <div class="card-body text-center">
             <h3 class="card-title"><a href="/posts/{{ $posts[0]->slug }}" class="text-decoration-none text-dark">{{ $posts[0]->title }}</a></h3>
             <p>
                 <small class="text-muted">
@@ -60,7 +54,6 @@
 
             <a href="/posts/{{ $posts[0]->slug }}" class="text-decoration-none btn btn-primary">Read More</a>
 
-
             </div> 
         </div>
 
@@ -68,9 +61,8 @@
         <div class="container">
             <div class="row">
 
-                 {{-- use foreach for looping each data from array --}}
+    {{-- use foreach for looping each data from array --}}
     {{-- skip post pertama [0] --}}
-
                 @foreach ($posts->skip(1) as $post)
                 <div class="col-md-4 mb-3">
                     <div class="card">
@@ -80,7 +72,6 @@
                             </a>
                         </div>
 
-                        {{-- jika ADA file image  --}}
         @if ($post->image)
         
 

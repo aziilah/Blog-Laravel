@@ -21,7 +21,6 @@
         
         </form>
 
-        {{-- jika ADA file image di upload --}}
         @if ($post->image)
           <div style="max-height: 400px; overflow: hidden;">
 
@@ -29,7 +28,6 @@
 
           </div>
 
-        {{-- jika TIDAK ADA file image diupload --}}
           @else 
             <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" alt="{{ $post->category->name }}" class="img-fluid mt-3">
 
@@ -37,14 +35,11 @@
 
 
             <article class="my-3 fs-5">
-              {{-- tidak melakukan escaping.bebas dari script html --}}
             {!! $post->body !!}  
 
             </article>
         </div>
     </div>
   </div>
-
-
 
 @endsection

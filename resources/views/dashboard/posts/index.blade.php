@@ -57,14 +57,4 @@
     </table>
   </div>
 
-
-
-
-
-
-
-
-
-
-
 @endsection

@@ -9,7 +9,7 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view('login.index', [ //folder login, index.blade.php
+        return view('login.index', [ 
             'title' => 'Login',
             'active' => 'login'
         ]); 
@@ -18,12 +18,11 @@ class LoginController extends Controller
     public function authenticate(Request $request)
     {
        $credentials = $request->validate([
-            'email' => 'required|email',    //boleh letak 'required|email:dns'; // dns tu utk kasi strict domain name
+            'email' => 'required|email',    
             'password' => 'required'
 
        ]);
 
-       //jika kita jalankan Class Auth, lalu attempt dari $credential, lalu request sesion regenerate utk hindar hacking oleh hacker guna sesion, dan redirect ke route baru, guna intended() method yg akan redirect user ke sebuah tempat/url sebelum melewati sebuah authentication middleware
        //if success login
        if(Auth::attempt($credentials)) {
            $request->session()->regenerate();
@@ -32,10 +31,8 @@ class LoginController extends Controller
        //if unsuccessful login
        return back()->with('loginError', 'Login Failed!');
 
-    //    dd('berhasilllll loginnnn');
     }
 
-    //bila User tekan button logout
     public function logout()
     {
         Auth::logout();

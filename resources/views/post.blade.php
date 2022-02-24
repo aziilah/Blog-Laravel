@@ -12,7 +12,6 @@
           {{ $post->author->name }}</a>  in <a href="/posts?category={{ $post->category->slug }}" class="text-decoration-none">
             {{ $post->category->name }}</a></p>
 
-                {{-- jika ADA file image di upload --}}
                 @if ($post->image)
                 <div style="max-height: 400px; overflow: hidden;">
 
@@ -20,24 +19,18 @@
 
                 </div>
 
-                {{-- jika TIDAK ADA file image diupload --}}
                 @else 
                   <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" alt="{{ $post->category->name }}" class="img-fluid">
 
                 @endif
 
             <article class="my-3 fs-5">
-              {{-- tidak melakukan escaping.bebas dari script html --}}
-            {!! $post->body !!}  
-
+              {!! $post->body !!}  
             </article>
         
-
           <a href="/posts" class=" d-block mt-3">Back to Posts</a>
       </div>
     </div>
   </div>
     
-
-
 @endsection

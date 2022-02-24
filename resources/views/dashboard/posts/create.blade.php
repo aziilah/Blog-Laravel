@@ -38,7 +38,7 @@
             <select class="form-select " name="category_id">
 
                 @foreach ( $categories as $category)
-                        {{-- jika old id = id baru = selected --}}
+                        {{-- if old id = id baru = selected --}}
                         @if(old('category_id') == $category->id)
                     <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
                     @else
@@ -50,11 +50,10 @@
 
         <div class="mb-3">
           <label for="image" class="form-label">Post Image</label>
-          {{-- tambah ini utk img preview --}}
           <img class="img-preview img-fluid mb-3 col-sm-5">
-          {{-- tambah js function onchange --}}
+
           <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
-          {{-- invalid image --}}
+
           @error('image')
           <div class="invalid-feedback">
             {{ $message }}
@@ -77,25 +76,7 @@
         <button type="submit" class="btn btn-primary">Create Post</button>
       </form>
   </div>
-
-
-  {{-- ambil input2 dari form, title ambil judul --}}
-{{-- <script>
-    //apa yg kita isi dalam title..
-    const title = document.querySelector('#title');
-    const slug = document.querySelector('#slug');
-    
-    // apa yg kita tulis di title..jadi berubah
-    title.addEventListener('change', function() {
-        //..akan masuk ke method ini dan diolah..
-        fetch('/dashboard/posts/checkSlug?title=' + title.value)
-        .then(response => response.json())
-        //..dikembalikan data sebagai slug
-        .then(data => slug.value(data.slug)
-        //input: title  output; slug
-    });
-</script> --}}
-
+  
 <script>
     const title = document.querySelector('#title');
     const slug = document.querySelector('#slug');
@@ -116,10 +97,8 @@
       const image = document.querySelector('#image');
       const imgPreview = document.querySelector('.img-preview');
 
-      //awal img d-inline, kasi jadi d-block
       imgPreview.style.display = 'block';
 
-      //ambil data image
       const oFReader = new FileReader();
       oFReader.readAsDataURL(image.files[0]);
 

@@ -14,14 +14,9 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {   
-        //use Gates
-        // login as admin 
-        // $this->authorize('admin');
-
-        //boleh akses view ini jika user sudah login as an admin
-        //folder dahboard, folder categoreis, file index.blade.php
+        
         return view ('dashboard.categories.index', [
-            'categories' => Category::all() //dapat semua data categories dari Model Category
+            'categories' => Category::all() 
         ]);
     }
 

@@ -26,17 +26,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {   
-        //letak Bootstrap template sebagai pagination 
         Paginator::useBootstrap();
 
         //Gates
-        //definisi sebuah Gate yg bernama'admin'..
-        //..yg boleh diakses oleh user yg username dia ialah ilah
         Gate::define('admin', function(User $user) {
-        //    return $user->username === 'ilah';  //utk manual
+        //    return $user->username === 'ilah';  
 
-        //cek di field 'is_admin' dalam table Users 
-        //if true (1) = admin
         return $user->is_admin; 
 
         });

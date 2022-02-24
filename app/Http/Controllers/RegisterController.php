@@ -16,10 +16,8 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function store(Request $request) //jadikan variable
+    public function store(Request $request) 
     {
-        //tangkap semua data dan tampilkan
-        //baru kirim disini $request
         // return $request()->all();
         $validatedData = $request->validate([
             'name' => 'required|max:255',
@@ -28,19 +26,14 @@ class RegisterController extends Controller
             'password' => 'required|min:5|max:255'
         ]);
 
-        //ambil key pwd, dan ganti dengan pwd yg sudah di encrypt
-        //encrtpt password
-        // $validatedData['password'] = bcrypt($validatedData['password']);
         //Hash method
         $validatedData['password'] = Hash::make($validatedData['password']);
         
-        //masukkan data ke DB
         User::create($validatedData);
 
         // message after redirect
         // $request->session()->flash('success', 'Registration successful! Please Login!');
 
-        //bila berjaya register user, redirect halaman ke login page dengan flash message
         return redirect ('/login')->with('success', 'Registration successful! Please Login!');
         
 

@@ -8,8 +8,6 @@
           </a>
         </li>
         <li class="nav-item">
-            {{-- href@route ini akan direct ke sebuah Controller (Resource Controller) utk dikelola oleh user (CRUD) --}}
-            {{-- url ini akan di handle oleh route di web.php oleh dashboardpostcontroller di method index() --}}
           <a class="nav-link {{ Request::is('dashboard/posts*') ? 'active' : '' }}" href="/dashboard/posts">
             <span data-feather="file-text"></span>
             My Posts
@@ -17,8 +15,6 @@
         </li>
       </ul>
 
-      {{-- boleh diakses oleh Admin --}}
-      {{-- use blade directive guna nama Gates 'admin'--}}
       @can('admin')   
         
       <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
